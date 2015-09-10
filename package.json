@@ -5,7 +5,8 @@
   "main": "server.js",
   "dependencies": {
     "minimist": "^1.1.2",
-    "osrm-isochrone": "^1.0.1",
+    "osrm": "^4.4.0-final",
+    "osrm-isochrone": "Mapotempo/osrm-isochrone#23e46de2761e7338395737ded5a0c70c357b761f",
     "polyline": "^0.1.0"
   },
   "devDependencies": {},
@@ -14,5 +15,5 @@
     "start": "node server.js"
   },
   "author": "Frédéric Rodrigo",
-  "license": " AGPL-3.0"
+  "license": "AGPL-3.0"
 }

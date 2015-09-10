@@ -13,6 +13,12 @@ npm install
 node server.js --osrm path-to-osrm-file --port 1723
 ```
 
+or using a shared-memory OSRM pre-loaded data
+
+```sh
+node server.js --port 1723
+```
+
 ##API
 KISS:
 * /0.1/isochrone?lat=LAT&lng=LNG&size=TIME

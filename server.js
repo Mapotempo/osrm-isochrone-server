@@ -18,19 +18,20 @@
 var http = require('http');
 var url = require('url');
 var querystring = require('querystring');
+var OSRM = require('osrm');
 var isochrone = require('osrm-isochrone');
 var argv = require('minimist')(process.argv.slice(2));
 
-if (!('osrm' in argv)) {
-  console.log('Usage --osrm file.osrm [--port 1723]');
-  process.exit();
-}
-var osrm = argv['osrm']; // prebuild dc osrm network file
+console.log('Usage [--osrm file.osrm] [--port 1723]');
+console.log('If no file.osrm provided, use shared-memory');
+var osrm_file = argv['osrm']; // prebuild dc osrm network file
 
 var port = 1723;
 if ('port' in argv) {
   port = parseInt(argv['port']);
 }
+
+var osrm = osrm_file ? new OSRM(osrm_file) : new OSRM({shared_memory: true});
 
 var server = http.createServer(function(req, res) {
   var page = url.parse(req.url).pathname;
