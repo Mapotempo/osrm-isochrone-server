@@ -24,3 +24,13 @@ KISS:
 * /0.1/isochrone?lat=LAT&lng=LNG&size=TIME
 
 TIME is in second.
+
+##Config
+The server uses [node-config](https://github.com/lorenwest/node-config) to set some inputs.
+An example of json config file (where maxspeed is in km/h):
+```
+{
+  "maxspeed": 104
+}
+```
+The config directory can be specified thanks to node-config: https://github.com/lorenwest/node-config/wiki/Environment-Variables#node_config_dir

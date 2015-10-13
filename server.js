@@ -18,6 +18,7 @@
 var http = require('http');
 var url = require('url');
 var querystring = require('querystring');
+var config = require('config');
 var OSRM = require('osrm');
 var isochrone = require('osrm-isochrone');
 var argv = require('minimist')(process.argv.slice(2));
@@ -58,7 +59,8 @@ var server = http.createServer(function(req, res) {
       location[0] = parseFloat(params['lng']);
     }
 
-    var iso = new isochrone(location, time, resolution, 130*0.8, 'kilometers', osrm, function(err, drivetime) {
+    var maxspeed = config.get('maxspeed') || 130*0.8;
+    var iso = new isochrone(location, time, resolution, maxspeed, 'kilometers', osrm, function(err, drivetime) {
       res.writeHead(200, {'Content-Type': 'application/json'});
       res.write(JSON.stringify(drivetime));
       console.log('200 Done');

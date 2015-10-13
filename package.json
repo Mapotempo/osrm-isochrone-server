@@ -9,7 +9,8 @@
     "osrm-isochrone": "Mapotempo/osrm-isochrone#31739e8f3ef0a66ac7bad085a3059d21b1dfc1dd",
     "polyline": "^0.1.0",
     "hull.js": "^0.2.7",
-    "turf-buffer": "^1.0.4"
+    "turf-buffer": "^1.0.4",
+    "config": "^1.16.0"
   },
   "devDependencies": {},
   "scripts": {
