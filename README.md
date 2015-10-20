@@ -27,9 +27,10 @@ TIME is in second.
 
 ##Config
 The server uses [node-config](https://github.com/lorenwest/node-config) to set some inputs.
-An example of json config file (where maxspeed is in km/h):
+An example of json config file (where maxspeed is in km/h, resolution is the number/density of points used in grid for isochrone):
 ```
 {
+  "resolution": 75,
   "maxspeed": 104
 }
 ```

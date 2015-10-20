@@ -42,7 +42,7 @@ var server = http.createServer(function(req, res) {
   console.log(page, params);
 
   if (page == '/0.1/isochrone') {
-    var resolution = 100; // sample resolution, number of points
+    var resolution = config.get('resolution'); // sample resolution, number of points
     var time = 300; // 300 second drivetime (5 minutes)
     var location = [-77.02926635742188,38.90011780426885]; // center point
 
@@ -59,7 +59,7 @@ var server = http.createServer(function(req, res) {
       location[0] = parseFloat(params['lng']);
     }
 
-    var maxspeed = config.get('maxspeed') || 130*0.8;
+    var maxspeed = config.get('maxspeed');
     var iso = new isochrone(location, time, resolution, maxspeed, 'kilometers', osrm, function(err, drivetime) {
       res.writeHead(200, {'Content-Type': 'application/json'});
       res.write(JSON.stringify(drivetime));
