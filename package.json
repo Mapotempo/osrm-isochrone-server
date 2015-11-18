@@ -6,7 +6,7 @@
   "dependencies": {
     "minimist": "^1.1.2",
     "osrm": "^4.4.0-final",
-    "osrm-isochrone": "Mapotempo/osrm-isochrone#5b466b08cd88ffc1e0e8df98dbc020f14f11e980",
+    "osrm-isochrone": "Mapotempo/osrm-isochrone#d41a561b80876a7b04dbf9c44d42a3226168036b",
     "polyline": "^0.1.0",
     "hull.js": "^0.2.7",
     "turf-buffer": "^1.0.4",

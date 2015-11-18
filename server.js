@@ -34,7 +34,8 @@ if ('port' in argv) {
   port = parseInt(argv['port']);
 }
 
-var osrm = osrm_file ? new OSRM(osrm_file) : new OSRM({shared_memory: true});
+var maxMatrixSize = config.get('maxMatrixSize');
+var osrm = osrm_file ? new OSRM(osrm_file) : new OSRM({shared_memory: true, distance_table: maxMatrixSize});
 
 var server = http.createServer(function(req, res) {
   var page = url.parse(req.url).pathname;
@@ -42,7 +43,7 @@ var server = http.createServer(function(req, res) {
   console.log(page, params);
 
   if (page == '/0.1/isochrone') {
-    var resolution = config.get('resolution'); // sample resolution, number of points
+    var resolution = config.get('resolution'); // sample resolution, number of points (must be less than square root of maxMatrixSize)
     var time = 300; // 300 second drivetime (5 minutes)
     var location = [-77.02926635742188,38.90011780426885]; // center point
 
