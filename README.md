@@ -21,7 +21,7 @@ node server.js --port 1723
 
 ##API
 KISS:
-* /0.1/isochrone?lat=LAT&lng=LNG&size=TIME
+* /0.1/isochrone?lat=LAT&lng=LNG&time=TIME
 
 TIME is in second.
 
