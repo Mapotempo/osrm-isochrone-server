@@ -62,9 +62,16 @@ var server = http.createServer(function(req, res) {
 
     var maxspeed = config.get('maxspeed');
     var iso = new isochrone(location, time, resolution, maxspeed, 'kilometers', osrm, function(err, drivetime) {
-      res.writeHead(200, {'Content-Type': 'application/json'});
-      res.write(JSON.stringify(drivetime));
-      console.log('200 Done');
+      if (err) {
+        res.writeHead(500, {'Content-Type': 'text/plain'});
+        res.write(JSON.stringify(err));
+        console.log('500 ' + JSON.stringify(err));
+      }
+      else {
+        res.writeHead(200, {'Content-Type': 'application/json'});
+        res.write(JSON.stringify(drivetime));
+        console.log('200 Done');
+      }
       res.end();
     });
     iso.draw = function(destinations) {
