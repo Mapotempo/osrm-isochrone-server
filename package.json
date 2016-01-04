@@ -1,12 +1,12 @@
 {
   "name": "osrm-isochrone-server",
-  "version": "0.1.0",
+  "version": "0.3.0",
   "description": "osrm-isochrone API web server",
   "main": "server.js",
   "dependencies": {
     "minimist": "^1.1.2",
     "osrm": "^4.4.0-final",
-    "osrm-isochrone": "Mapotempo/osrm-isochrone#d41a561b80876a7b04dbf9c44d42a3226168036b",
+    "osrm-isochrone": ">=2.0.0",
     "polyline": "^0.1.0",
     "hull.js": "^0.2.7",
     "turf-buffer": "^1.0.4",

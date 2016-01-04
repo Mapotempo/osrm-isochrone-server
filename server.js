@@ -61,7 +61,12 @@ var server = http.createServer(function(req, res) {
     }
 
     var maxspeed = config.get('maxspeed');
-    var iso = new isochrone(location, time, resolution, maxspeed, 'kilometers', osrm, function(err, drivetime) {
+    var iso = new isochrone(location, time, {
+      resolution: resolution,
+      maxspeed: maxspeed,
+      unit: 'kilometers',
+      network: osrm
+    }, function(err, drivetime) {
       if (err) {
         res.writeHead(500, {'Content-Type': 'text/plain'});
         res.write(JSON.stringify(err));
