@@ -31,7 +31,9 @@ An example of json config file (where maxspeed is in km/h, resolution is the num
 ```
 {
   "resolution": 75,
-  "maxspeed": 104
+  "maxMatrixSize": 1000000,
+  "maxspeed": 104,
+  "precisionFloat": 5
 }
 ```
 The config directory can be specified thanks to node-config: https://github.com/lorenwest/node-config/wiki/Environment-Variables#node_config_dir

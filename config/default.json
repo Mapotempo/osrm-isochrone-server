@@ -1,5 +1,6 @@
 {
   "resolution": 110,
   "maxMatrixSize": 1000000,
-  "maxspeed": 104
+  "maxspeed": 104,
+  "precisionFloat": 5
 }

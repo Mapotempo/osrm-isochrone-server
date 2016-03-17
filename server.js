@@ -87,6 +87,10 @@ var server = http.createServer(function(req, res) {
       });
       var concavity = (Math.abs(this.bbox[2] - this.bbox[0]) + Math.abs(this.bbox[3] - this.bbox[1])) / 2 / resolution * 7;
       var result = hull(points, concavity);
+      var precisionFloat = config.get('precisionFloat');
+      if (precisionFloat) result = result.map(function(coord) {
+        return [+coord[0].toFixed(precisionFloat), +coord[1].toFixed(precisionFloat)];
+      });
       var result = {
         type: 'FeatureCollection',
         features: [
