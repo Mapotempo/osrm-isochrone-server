@@ -5,7 +5,7 @@
   "main": "server.js",
   "dependencies": {
     "minimist": "^1.1.2",
-    "osrm": "~5.5",
+    "osrm": ">=5.5",
     "osrm-isochrone": ">=2.0.0",
     "polyline": "^0.1.0",
     "hull.js": "^0.2.7",
