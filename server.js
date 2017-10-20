@@ -60,13 +60,12 @@ var server = http.createServer(function(req, res) {
       location[0] = parseFloat(params['lng']);
     }
 
-    var maxspeed = config.get('maxspeed');
-    var iso = new isochrone(location, time, {
-      resolution: resolution,
-      maxspeed: maxspeed,
-      unit: 'kilometers',
-      network: osrm
-    }, function(err, drivetime) {
+    params.resolution = resolution;
+    params.maxspeed = config.get('maxspeed');
+    params.unit = 'kilometers';
+    params.network = osrm;
+
+    var iso = new isochrone(location, time, params, function(err, drivetime) {
       if (err) {
         res.writeHead(500, {'Content-Type': 'text/plain'});
         res.write(JSON.stringify(err));
@@ -105,7 +104,7 @@ var server = http.createServer(function(req, res) {
         ]
       };
       return result;
-    }
+    };
     iso.getIsochrone();
   } else {
     console.log(404);
