@@ -26,8 +26,8 @@ var hull = require('hull.js');
 var buffer = require('turf-buffer');
 
 console.log('Usage [--osrm file.osrm] [--port 1723]');
-console.log('If no file.osrm provided, use shared-memory');
 var osrm_file = argv['osrm']; // prebuild dc osrm network file
+console.log(osrm_file ? 'Booting with file.osrm provided' : 'No file.osrm provided, using shared-memory');
 
 var port = 1723;
 if ('port' in argv) {
@@ -59,14 +59,19 @@ var server = http.createServer(function(req, res) {
     if ('lng' in params) {
       location[0] = parseFloat(params['lng']);
     }
+    if ('approach' in params) {
+      params.approach = params.approach.split(',');
+    }
+    if ('exclude' in params) {
+      params.exclude = params.exclude.split(',');
+    }
 
-    var maxspeed = config.get('maxspeed');
-    var iso = new isochrone(location, time, {
-      resolution: resolution,
-      maxspeed: maxspeed,
-      unit: 'kilometers',
-      network: osrm
-    }, function(err, drivetime) {
+    params.resolution = resolution;
+    params.maxspeed = config.get('maxspeed');
+    params.unit = 'kilometers';
+    params.network = osrm;
+
+    var iso = new isochrone(location, time, params, function(err, drivetime) {
       if (err) {
         res.writeHead(500, {'Content-Type': 'text/plain'});
         res.write(JSON.stringify(err));
@@ -105,7 +110,7 @@ var server = http.createServer(function(req, res) {
         ]
       };
       return result;
-    }
+    };
     iso.getIsochrone();
   } else {
     console.log(404);
