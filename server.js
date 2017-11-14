@@ -53,6 +53,10 @@ var server = http.createServer(function(req, res) {
     if ('time' in params) {
       time = parseInt(params['time']);
     }
+    if ('distance' in params) {
+      time = parseInt(params['distance']);
+      params.distance = true;
+    }
     if ('lat' in params) {
       location[1] = parseFloat(params['lat']);
     }

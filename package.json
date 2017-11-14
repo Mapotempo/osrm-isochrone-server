@@ -1,12 +1,12 @@
 {
   "name": "osrm-isochrone-server",
-  "version": "0.3.0",
+  "version": "5.12.1",
   "description": "osrm-isochrone API web server",
   "main": "server.js",
   "dependencies": {
     "minimist": "^1.1.2",
     "osrm": ">=5.5",
-    "osrm-isochrone": "Mapotempo/osrm-isochrone",
+    "osrm-isochrone": "git+https://github.com/Mapotempo/osrm-isochrone.git",
     "polyline": "^0.1.0",
     "hull.js": "^0.2.7",
     "turf-buffer": "^1.0.4",
