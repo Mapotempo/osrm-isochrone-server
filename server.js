@@ -94,7 +94,11 @@ var server = http.createServer(function(req, res) {
       }).map(function(feat) {
         return feat.geometry.coordinates;
       });
-      var concavity = (Math.abs(this.bboxGrid[2] - this.bboxGrid[0]) + Math.abs(this.bboxGrid[3] - this.bboxGrid[1])) / 2 / resolution * 7;
+      if(params.distance === true) {
+        var concavity = 0.0758 * this.sizeCellGrid;
+      } else {
+        var concavity = 0.0368 * this.sizeCellGrid - 0.0010;
+      }
       var result = hull(points, concavity);
       var precisionFloat = config.get('precisionFloat');
       if (precisionFloat) result = result.map(function(coord) {
